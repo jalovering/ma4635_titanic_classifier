@@ -8,14 +8,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn import preprocessing
 import joblib
-
-# PCA Dimensionality Reduction
-def pca(X, num_pc):
-    pca = PCA(n_components=num_pc)
-    pca = pca.fit(X)
-    X = pca.transform(X)
-    X = pd.DataFrame(X)
-    return X
+import train_final_model
 
 def main():
     # Import Test Data
@@ -29,7 +22,7 @@ def main():
     X_normalized = pd.DataFrame(X_normalized) # to dataframe
 
     # dimensionality reduction
-    X_selected = pca(X_normalized, 3)
+    X_selected = train_final_model.pca(X_normalized, 3)
 
     # make predictions
     clf = joblib.load('trained_models/best_kNN_3pc.pkl')

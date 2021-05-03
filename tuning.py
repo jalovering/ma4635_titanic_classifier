@@ -32,10 +32,8 @@ def train(X_train, y_train, X_test, classifier, num_pc):
         clf = GridSearchCV(
             estimator = RandomForestClassifier(), param_grid = param_grid[classifier], n_jobs = -1
     )
-    grid_search = clf.fit(X_train, y_train) # balanced training data
 
-    # save the model
-    joblib.dump(grid_search.best_estimator_, 'trained_models/best_' + classifier + '_' + str(num_pc) + 'pc.pkl', compress = 1)
+    grid_search = clf.fit(X_train, y_train)
 
     best_grid = grid_search.best_params_
     result = grid_search.predict(X_test)
