@@ -84,7 +84,7 @@ def plot_scores(results, num_pc_list):
 def main():
     # Import Data
     data = pd.read_csv("data/train_clean.csv").sample(frac=1).reset_index(drop=True)
-    data = data.iloc[:5000,]
+    # data = data.iloc[:5000,]
     data = data.drop(columns=["PassengerId", "Name", "Cabin"])
     feature_names = data.drop(columns="Survived").columns
     X = data.drop(columns="Survived").to_numpy() # Predictors

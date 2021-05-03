@@ -1,0 +1,17 @@
+num_principal_components,classifier,best_grid,true_class,predicted_class,accuracy,f1
+1,SVC,"{'C': 1, 'kernel': 'rbf'}",[0 1 0 ... 0 1 1],[0 1 0 ... 1 1 1],0.6971818181818182,0.631241005203144
+1,kNN,"{'algorithm': 'ball_tree', 'metric': 'manhattan', 'n_neighbors': 15, 'weights': 'uniform'}",[0 1 0 ... 0 1 1],[0 1 0 ... 0 1 1],0.694939393939394,0.645864846800577
+1,LR,{'solver': 'saga'},[0 1 0 ... 0 1 1],[0 0 0 ... 0 0 0],0.5983636363636363,0.1620938171703123
+1,RF,"{'criterion': 'entropy', 'max_depth': 80, 'max_features': 'auto', 'n_estimators': 100}",[0 1 0 ... 0 1 1],[0 0 1 ... 0 1 1],0.6491212121212121,0.5759074094421859
+2,SVC,"{'C': 1000, 'kernel': 'rbf'}",[0 1 0 ... 0 1 1],[0 1 0 ... 1 1 1],0.7148181818181818,0.648961169756425
+2,kNN,"{'algorithm': 'ball_tree', 'metric': 'manhattan', 'n_neighbors': 15, 'weights': 'uniform'}",[0 1 0 ... 0 1 1],[0 1 0 ... 0 0 1],0.7402121212121212,0.6943345099297606
+2,LR,{'solver': 'saga'},[0 1 0 ... 0 1 1],[0 0 0 ... 0 0 0],0.5990606060606061,0.16875039266193378
+2,RF,"{'criterion': 'entropy', 'max_depth': 110, 'max_features': 'auto', 'n_estimators': 200}",[0 1 0 ... 0 1 1],[0 1 1 ... 1 1 1],0.7246969696969697,0.6709167964646648
+3,SVC,"{'C': 1000, 'kernel': 'rbf'}",[0 1 0 ... 0 1 1],[0 1 0 ... 0 1 1],0.744030303030303,0.6993843197266807
+3,kNN,"{'algorithm': 'auto', 'metric': 'manhattan', 'n_neighbors': 15, 'weights': 'uniform'}",[0 1 0 ... 0 1 1],[0 1 0 ... 0 0 1],0.756,0.714872521246459
+3,LR,{'solver': 'sag'},[0 1 0 ... 0 1 1],[0 0 0 ... 0 0 0],0.5999696969696969,0.17323229160142795
+3,RF,"{'criterion': 'entropy', 'max_depth': 90, 'max_features': 'log2', 'n_estimators': 200}",[0 1 0 ... 0 1 1],[0 1 1 ... 0 1 1],0.7285454545454545,0.6812553373185313
+4,SVC,"{'C': 100, 'kernel': 'rbf'}",[0 1 0 ... 0 1 1],[0 1 0 ... 0 1 0],0.7493636363636363,0.7092283353840746
+4,kNN,"{'algorithm': 'ball_tree', 'metric': 'manhattan', 'n_neighbors': 15, 'weights': 'uniform'}",[0 1 0 ... 0 1 1],[0 1 0 ... 0 0 1],0.7594545454545455,0.7198023296858455
+4,LR,{'solver': 'newton-cg'},[0 1 0 ... 0 1 1],[0 0 0 ... 0 0 0],0.598939393939394,0.16419324281654563
+4,RF,"{'criterion': 'entropy', 'max_depth': 100, 'max_features': 'auto', 'n_estimators': 100}",[0 1 0 ... 0 1 1],[0 1 1 ... 0 1 1],0.7272727272727273,0.6792587312900926
