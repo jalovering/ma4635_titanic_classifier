@@ -84,22 +84,21 @@ def plot_scores(results, num_pc_list):
 def main():
     # Import Data
     data = pd.read_csv("data/train_clean.csv").sample(frac=1).reset_index(drop=True)
-    # data = data.iloc[:5000,]
+    data = data.iloc[:10000,]
     data = data.drop(columns=["PassengerId", "Name", "Cabin"])
     feature_names = data.drop(columns="Survived").columns
     X = data.drop(columns="Survived").to_numpy() # Predictors
     y = data['Survived'].to_numpy() # Response
 
-    # Train and Test Models Using Parameter Grid
-    print("Running parameter grid...")
-
-    # normalization
+    # Normalization
     X_normalized = preprocessing.normalize(X, axis=0)
     X_normalized = pd.DataFrame(X_normalized) # to dataframe
 
-    # cross val split
+    # Cross-Val Split
     X_train, X_test, y_train, y_test = train_test_split(X_normalized, y, test_size=0.33)
 
+    # Train and Test Models Using Parameter Grid
+    print("Running parameter grid...")
     # run hyperparameter tuning for each number of features
     for num_pc in num_pc_list:
 
@@ -136,8 +135,12 @@ def main():
     for i, row in results.iterrows(): 
         accuracies.append(accuracy_score(row.true_class, row.predicted_class))
         f1s.append(f1_score(row.true_class, row.predicted_class))
+        confusion_matricies.append(confusion_matrix(row.true_class, row.predicted_class).ravel())
+
     results['accuracy'] = accuracies
     results['f1'] = f1s
+    results['tn_fp_fn_tp'] = confusion_matricies
+    results = results.drop(columns=["true_class", "predicted_class"])
     results.to_csv("model_evaluation/results.csv", index=False)
 
     # Plot Results
@@ -174,5 +177,6 @@ if __name__ == "__main__":
     true, predicted = [], []
     best_grids = []
     num_pc_tracker = []
+    confusion_matricies = []
 
     main()
