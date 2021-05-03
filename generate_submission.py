@@ -13,7 +13,7 @@ import train_final_model
 def main():
     # Import Test Data
     data = pd.read_csv("data/test_clean.csv").reset_index(drop=True)
-    data = data.iloc[:1000,]
+    # data = data.iloc[:1000,]
     ids = data["PassengerId"]
     X = data.drop(columns=["PassengerId", "Name", "Cabin"]).to_numpy() # Predictors
 
@@ -25,14 +25,17 @@ def main():
     X_selected = train_final_model.pca(X_normalized, 3)
 
     # make predictions
-    clf = joblib.load('trained_models/best_kNN_3pc.pkl')
+    clf = joblib.load('trained_models/' + filename + '.pkl')
     prediction = clf.predict(X_selected)
 
     # Compile Results
     results = pd.DataFrame(list(zip(ids, prediction)), columns=["PassengerId", "Survived"])
-    results.to_csv('submission.csv', index=False)
+    results.to_csv('submission_' + filename + '.csv', index=False)
 
 if __name__ == "__main__":
     r = 4635 # random seed
     np.random.seed(r)
+
+    filename = 'best_kNN_3pc'
+
     main()
