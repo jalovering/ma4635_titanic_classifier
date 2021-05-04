@@ -57,8 +57,11 @@ if __name__ == "__main__":
     np.random.seed(r)
 
     # Pick Best Parameters
-    classifier = 'kNN'
-    params = {'algorithm': 'auto', 'metric': 'manhattan', 'n_neighbors': 15, 'weights': 'uniform'}
+    # classifier = 'kNN'
+    # params = {'algorithm': 'auto', 'metric': 'manhattan', 'n_neighbors': 15, 'weights': 'uniform'}
+    # num_pc = 3
+    classifier = 'SVC'
+    params = {'C': 1000, 'kernel': 'rbf'}
     num_pc = 3
-
+    
     main()

@@ -87,8 +87,10 @@ def plot_scores(results, num_pc_list):
 def main():
     # Import Data
     data = pd.read_csv("data/train_clean.csv").sample(frac=1).reset_index(drop=True)
-    data = data.iloc[:1000,]
-    data = data.drop(columns=["PassengerId", "Name", "Cabin"])
+    data = data.iloc[:10000,]
+    # data = data.drop(columns=["PassengerId", "Name", "Cabin"])
+    data = data.drop(columns=["PassengerId", "Name", "Cabin", "SibSp", "Parch", "Fare", "Embarked", 'STON/OQ.', 'PC', 'SC/A4',
+       'C.A./SOTON', 'S.O.P.', 'A./5.', 'A/4', 'SC/PARIS', 'CA.']) # everything but ['Survived', 'Pclass', 'Sex', 'Age']
     feature_names = data.drop(columns="Survived").columns
     X = data.drop(columns="Survived").to_numpy() # Predictors
     y = data['Survived'].to_numpy() # Response
@@ -106,7 +108,8 @@ def main():
     for num_pc in num_pc_list:
 
         # dimensionality reduction
-        X_train_selected, X_test_selected = pca(X_train, X_test, feature_names, num_pc)
+        # X_train_selected, X_test_selected = pca(X_train, X_test, feature_names, num_pc) # run PCA
+        X_train_selected, X_test_selected = X_train, X_test # skip PCA
 
         # tune all models in the parameter grid
         for classifier in param_grid.keys():

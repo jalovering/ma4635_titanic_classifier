@@ -36,6 +36,7 @@ if __name__ == "__main__":
     r = 4635 # random seed
     np.random.seed(r)
 
-    filename = 'best_kNN_3pc'
+    # filename = 'best_kNN_3pc'
+    filename = 'best_SVC_3pc'
 
     main()
